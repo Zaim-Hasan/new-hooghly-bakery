@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Hooghly Bakery | Food & Grocery Supplier - Satkhira</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Poppins & Fredoka) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bakery: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309',
+                            800: '#92400e',
+                            900: '#78350f',
+                            accent: '#e11d48',
+                            whatsapp: '#25D366'
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        h1, h2, h3, h4, .font-heading { font-family: 'Fredoka', cursive; }
+        
+        .pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.95; transform: scale(1.02); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fffbeb;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f59e0b;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d97706;
+        }
+    </style>
+</head>
+<body class="bg-amber-50/40 text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-gradient-to-r from-amber-600 via-orange-500 to-amber-600 text-white text-xs sm:text-sm py-2 px-4 text-center font-medium shadow-inner flex justify-between items-center px-4 md:px-12">
+        <div class="hidden sm:flex items-center gap-4">
+            <span><i class="fa-solid font-bold fa-location-dot text-amber-200 mr-1"></i> Satkhira Sadar, Satkhira</span>
+            <span><i class="fa-solid fa-clock text-amber-200 mr-1"></i> Open: 7:00 AM - 10:00 PM</span>
+        </div>
+        <div class="w-full sm:w-auto text-center sm:text-right flex items-center justify-center sm:justify-end gap-3">
+            <span class="bg-amber-800/40 px-2 py-0.5 rounded text-amber-100 font-semibold text-xs">Wholesale & Retail</span>
+            <a href="tel:01400993624" class="hover:underline font-bold"><i class="fa-solid fa-phone mr-1"></i> 01400993624</a>
+        </div>
+    </div>
+
+    <!-- MAIN HEADER / NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            
+            <!-- LOGO / BRAND NAME -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:rotate-6 transition-transform">
+                    <i class="fa-solid fa-bread-slice text-2xl text-white"></i>
+                </div>
+                <div>
+                    <span class="text-xl sm:text-2xl font-bold font-heading text-amber-900 leading-tight block">New Hooghly Bakery</span>
+                    <span class="text-[11px] font-semibold text-orange-600 tracking-wider uppercase block">Food & Grocery Supplier</span>
+                </div>
+            </a>
+
+            <!-- NAVIGATION LINKS -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700">
+                <a href="#hero" class="hover:text-amber-600 transition-colors">Home</a>
+                <a href="#products" class="hover:text-amber-600 transition-colors">Products</a>
+                <a href="#features" class="hover:text-amber-600 transition-colors">Why Choose Us</a>
+                <a href="#contact" class="hover:text-amber-600 transition-colors">Contact</a>
+            </nav>
+
+            <!-- ACTION BUTTONS & CART -->
+            <div class="flex items-center gap-3">
+                <button onclick="toggleCartModal()" class="relative bg-amber-100 hover:bg-amber-200 text-amber-900 p-3 rounded-full transition-all flex items-center justify-center focus:outline-none">
+                    <i class="fa-solid fa-cart-shopping text-xl"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-rose-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                </button>
+                <a href="#products" class="hidden sm:inline-flex bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-5 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all text-sm items-center gap-2">
+                    <i class="fa-solid fa-store"></i> Shop Now
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative overflow-hidden bg-gradient-to-b from-amber-100/60 via-amber-50/30 to-amber-50 py-12 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-orange-100 border border-orange-300 text-orange-800 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm">
+                        <i class="fa-solid fa-award text-amber-600"></i> #1 Bakery Supplier in Satkhira
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-amber-950 leading-tight">
+                        Freshly Baked <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-orange-600">Delights</span> Delivered Daily!
+                    </h1>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                        Order fresh bread, handmade biscuits, signature cakes, and delicious snacks directly from <strong>New Hooghly Bakery</strong>. We supply both retail shop orders & home delivery across Satkhira.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#products" class="w-full sm:w-auto bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-8 py-3.5 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-basket-shopping"></i> Browse Catalog
+                        </a>
+                        <a href="https://wa.me/8801400993624?text=Hello%20New%20Hooghly%20Bakery,%20I%20want%20to%20place%20an%20order." target="_blank" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-2xl shadow-lg hover:shadow-xl transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Order via WhatsApp
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-amber-200/60 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl font-bold font-heading text-amber-900">100%</p>
+                            <p class="text-xs text-gray-500">Fresh Ingredients</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold font-heading text-amber-900">Fast</p>
+                            <p class="text-xs text-gray-500">Satkhira Delivery</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-bold font-heading text-amber-900">Best</p>
+                            <p class="text-xs text-gray-500">Wholesale Price</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Banner / Visual -->
+                <div class="relative flex justify-center">
+                    <div class="w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-gradient-to-tr from-amber-300 via-orange-300 to-rose-200 absolute -z-10 blur-2xl opacity-70"></div>
+                    <div class="relative bg-white p-6 rounded-3xl shadow-2xl border-4 border-amber-100 max-w-md w-full">
+                        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Fresh Bakery Products" class="rounded-2xl w-full h-64 object-cover shadow-md mb-4">
+                        <div class="bg-amber-50 p-4 rounded-xl border border-amber-200 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs font-bold text-orange-600 uppercase">Special Wholesale Deal</span>
+                                <h4 class="font-bold text-amber-900 font-heading text-lg">Bulk Snack & Bread Supply</h4>
+                                <p class="text-xs text-gray-500">For Grocery Shops & Restaurants</p>
+                            </div>
+                            <a href="tel:01400993624" class="bg-amber-500 hover:bg-amber-600 text-white p-3 rounded-xl shadow transition-colors">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US / HIGHLIGHTS -->
+    <section id="features" class="py-12 bg-white border-y border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                
+                <div class="p-6 rounded-2xl bg-amber-50/50 border border-amber-100 hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-950 font-heading mb-1">Fast Local Delivery</h3>
+                    <p class="text-xs text-gray-600">Prompt supply across Satkhira Sadar and nearby union markets.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-amber-50/50 border border-amber-100 hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-wheat-awn"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-950 font-heading mb-1">100% Oven Fresh</h3>
+                    <p class="text-xs text-gray-600">Baked daily with premium ingredients and hygienic processing.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-amber-50/50 border border-amber-100 hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-950 font-heading mb-1">Wholesale & Retail</h3>
+                    <p class="text-xs text-gray-600">Flexible orders for households, events, and grocery store owners.</p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-amber-50/50 border border-amber-100 hover:shadow-lg transition-shadow flex flex-col items-center text-center">
+                    <div class="w-14 h-14 bg-amber-500/10 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-amber-950 font-heading mb-1">Quality Guaranteed</h3>
+                    <p class="text-xs text-gray-600">Trusted supplier standing by high taste & hygiene standards.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCT SHOWCASE SECTION -->
+    <section id="products" class="py-16 bg-amber-50/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold text-orange-600 uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full">Our Menu</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-amber-950 font-heading mt-2">Explore Fresh Bakery Items</h2>
+                <p class="text-gray-600 text-sm mt-2">Select your favorite products and place order directly online or via WhatsApp.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10" id="category-filters">
+                <button onclick="filterProducts('all')" class="category-btn active bg-amber-500 text-white px-5 py-2 rounded-full font-semibold text-sm shadow transition-all">All Items</button>
+                <button onclick="filterProducts('bread')" class="category-btn bg-white hover:bg-amber-100 text-gray-700 px-5 py-2 rounded-full font-semibold text-sm border border-amber-200 transition-all">Fresh Bread</button>
+                <button onclick="filterProducts('cookies')" class="category-btn bg-white hover:bg-amber-100 text-gray-700 px-5 py-2 rounded-full font-semibold text-sm border border-amber-200 transition-all">Cookies & Biscuits</button>
+                <button onclick="filterProducts('cakes')" class="category-btn bg-white hover:bg-amber-100 text-gray-700 px-5 py-2 rounded-full font-semibold text-sm border border-amber-200 transition-all">Cakes & Pastries</button>
+                <button onclick="filterProducts('snacks')" class="category-btn bg-white hover:bg-amber-100 text-gray-700 px-5 py-2 rounded-full font-semibold text-sm border border-amber-200 transition-all">Savory Snacks</button>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="product-grid">
+                <!-- Dynamic Content Rendered via JS -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- WHOLESALE ORDER PROMO BANNER -->
+    <section class="py-12 bg-gradient-to-r from-amber-600 to-orange-600 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="text-center md:text-left">
+                <span class="bg-amber-900/40 text-amber-200 text-xs font-bold px-3 py-1 rounded-full uppercase">For Retailers & Shop Owners</span>
+                <h3 class="text-2xl sm:text-3xl font-bold font-heading mt-2">Need Wholesale Bakery Supply in Satkhira?</h3>
+                <p class="text-amber-100 text-sm mt-1">Get special wholesale pricing for restaurants, school canteens, and grocery stores.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="tel:01400993624" class="bg-white text-amber-900 hover:bg-amber-50 font-bold px-6 py-3 rounded-xl shadow-lg transition-all text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-phone-volume text-amber-600"></i> Call 01400993624
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & BUSINESS INFORMATION SECTION -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Business Info -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-xs font-bold text-orange-600 uppercase tracking-widest bg-orange-100 px-3 py-1 rounded-full">Contact Us</span>
+                        <h2 class="text-3xl font-extrabold text-amber-950 font-heading mt-2">Get in Touch with New Hooghly Bakery</h2>
+                        <p class="text-gray-600 text-sm mt-2">Visit our outlet or contact us directly for supplier inquiries and daily fresh bakery orders.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-900 text-sm">Store Address</h4>
+                                <p class="text-xs text-gray-600 mt-0.5">Holding No: 1145-01, Shop No: 09, Dakshin Katia, Satkhira Sadar, Satkhira.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
+                            <div class="w-10 h-10 bg-emerald-500 text-white rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-900 text-sm">Phone / Hotline</h4>
+                                <p class="text-xs text-gray-600 mt-0.5"><a href="tel:01400993624" class="hover:underline font-semibold text-emerald-700">01400993624</a> (Call or WhatsApp)</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
+                            <div class="w-10 h-10 bg-sky-500 text-white rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-900 text-sm">Email Address</h4>
+                                <p class="text-xs text-gray-600 mt-0.5"><a href="mailto:msjahidhasantraders@yahoo.com" class="hover:underline text-sky-700">msjahidhasantraders@yahoo.com</a></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
+                            <div class="w-10 h-10 bg-purple-500 text-white rounded-lg flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-truck-ramp-box"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-amber-900 text-sm">Business Operations</h4>
+                                <p class="text-xs text-gray-600 mt-0.5">Category: Food & Grocery | Business Type: Supplier & Retailer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Quick Inquiry Form -->
+                <div class="bg-amber-50/50 p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-sm">
+                    <h3 class="text-2xl font-bold text-amber-950 font-heading mb-4">Send Quick Inquiry</h3>
+                    <form onsubmit="handleInquirySubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="inquiry-name" required placeholder="Enter your full name" class="w-full px-4 py-2.5 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" id="inquiry-phone" required placeholder="01XXXXXXXXX" class="w-full px-4 py-2.5 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-700 mb-1">Message / Supplier Requirement</label>
+                            <textarea id="inquiry-msg" rows="4" required placeholder="Write details about your order requirement..." class="w-full px-4 py-2.5 rounded-xl border border-amber-200 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white text-sm"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold py-3 rounded-xl shadow-md transition-all text-sm">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-amber-950 text-amber-200/80 pt-12 pb-6 border-t border-amber-900 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-amber-900/80">
+                
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-bread-slice text-2xl text-amber-400"></i>
+                        <span class="text-xl font-bold font-heading text-white">New Hooghly Bakery</span>
+                    </div>
+                    <p class="text-xs text-amber-200/70 leading-relaxed">
+                        Leading food and bakery item supplier in Satkhira. Dedicated to delivering fresh, delicious, and high-quality bakery goods daily.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold font-heading mb-3 text-sm">Quick Links</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#hero" class="hover:text-amber-400 transition-colors">Home</a></li>
+                        <li><a href="#products" class="hover:text-amber-400 transition-colors">Bakery Catalog</a></li>
+                        <li><a href="#features" class="hover:text-amber-400 transition-colors">Wholesale Information</a></li>
+                        <li><a href="#contact" class="hover:text-amber-400 transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold font-heading mb-3 text-sm">Main Office & Store</h4>
+                    <p class="text-xs text-amber-200/70 leading-relaxed">
+                        Holding No : 1145-01, Shop No : 09,<br>
+                        Dakshin Katia, Satkhira.<br>
+                        <strong>Phone:</strong> 01400993624<br>
+                        <strong>Email:</strong> msjahidhasantraders@yahoo.com
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="pt-6 text-center text-xs text-amber-300/60 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <p>&copy; <span id="year"></span> New Hooghly Bakery. All rights reserved.</p>
+                <p>Supplier Category: Food & Grocery | Satkhira, Bangladesh</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SHOPPING CART SLIDE-OUT / MODAL DRAWER -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden transition-opacity">
+        <div class="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl flex flex-col justify-between overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="p-4 bg-amber-50 border-b border-amber-200 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-amber-600 text-lg"></i>
+                    <h3 class="font-bold text-amber-950 font-heading text-lg">Your Shopping Basket</h3>
+                </div>
+                <button onclick="toggleCartModal()" class="text-gray-400 hover:text-gray-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Cart Items Container -->
+            <div id="cart-items-container" class="p-4 overflow-y-auto flex-1 space-y-3">
+                <!-- Cart items rendered dynamically -->
+            </div>
+
+            <!-- Checkout Form & Summary -->
+            <div class="p-4 bg-amber-50/50 border-t border-amber-200 space-y-3">
+                <div class="space-y-1 text-sm border-b border-amber-200 pb-2">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal" class="font-semibold">৳0</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Delivery Fee</span>
+                        <span id="cart-delivery" class="font-semibold">৳30</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-amber-950 pt-1">
+                        <span>Grand Total</span>
+                        <span id="cart-grandtotal" class="text-orange-600">৳30</span>
+                    </div>
+                </div>
+
+                <!-- Customer Details Input -->
+                <div class="space-y-2 text-xs">
+                    <input type="text" id="cust-name" placeholder="Full Name *" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    <input type="tel" id="cust-phone" placeholder="Phone Number *" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    <input type="text" id="cust-address" placeholder="Delivery Address in Satkhira *" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-1 focus:ring-amber-500">
+                    
+                    <div class="grid grid-cols-2 gap-2">
+                        <select id="cust-area" onchange="updateDeliveryFee()" class="w-full px-2 py-2 border rounded-lg bg-white text-xs focus:outline-none">
+                            <option value="satkhira-sadar">Satkhira Sadar (৳30)</option>
+                            <option value="outside-sadar">Outside Sadar (৳60)</option>
+                        </select>
+                        <select id="cust-payment" class="w-full px-2 py-2 border rounded-lg bg-white text-xs focus:outline-none">
+                            <option value="Cash on Delivery">Cash on Delivery</option>
+                            <option value="bKash / Nagad">bKash / Nagad</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="submitOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Confirm Order via WhatsApp
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- NOTIFICATION TOAST -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 bg-amber-900 text-white px-5 py-3 rounded-xl shadow-2xl hidden items-center gap-3 border border-amber-700">
+        <i class="fa-solid fa-circle-check text-emerald-400"></i>
+        <span id="toast-message" class="text-xs font-semibold">Item added to cart!</span>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // Set dynamic copyright year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Sample Product Database
+        const products = [
+            {
+                id: 1,
+                name: 'Special Butter Milk Bread',
+                category: 'bread',
+                price: 60,
+                unit: '400g Pack',
+                discount: 'Fresh Daily',
+                image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 2,
+                name: 'Handmade Toast Biscuits',
+                category: 'cookies',
+                price: 120,
+                unit: '500g Box',
+                discount: 'Best Seller',
+                image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 3,
+                name: 'Vanilla Cream Slice Cake',
+                category: 'cakes',
+                price: 40,
+                unit: 'Per Piece',
+                discount: 'Popular',
+                image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 4,
+                name: 'Crispy Butter Cookies',
+                category: 'cookies',
+                price: 150,
+                unit: '400g Container',
+                discount: 'Hot Deal',
+                image: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 5,
+                name: 'Spicy Chicken Patties',
+                category: 'snacks',
+                price: 35,
+                unit: 'Per Piece',
+                discount: 'Fresh Warm',
+                image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 6,
+                name: 'Chocolate Fudge Cake',
+                category: 'cakes',
+                price: 450,
+                unit: '1 Pound',
+                discount: 'Special',
+                image: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 7,
+                name: 'Atta Brown Bread',
+                category: 'bread',
+                price: 70,
+                unit: '350g Pack',
+                discount: 'Healthy',
+                image: 'https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=400&q=80'
+            },
+            {
+                id: 8,
+                name: 'Crispy Salted Chanachur Mix',
+                category: 'snacks',
+                price: 80,
+                unit: '250g Pack',
+                discount: 'Snack Special',
+                image: 'https://images.unsplash.com/photo-1621996346565-e3d5d6281292?auto=format&fit=crop&w=400&q=80'
+            }
+        ];
+
+        // Global Cart State
+        let cart = [];
+        let deliveryFee = 30;
+
+        // Render Products Grid
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('product-grid');
+            grid.innerHTML = '';
+
+            const filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-4 shadow-sm hover:shadow-xl transition-all border border-amber-100 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden rounded-xl mb-3 h-44">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                            <span class="absolute top-2 left-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-bold px-2.5 py-1 rounded-full shadow">
+                                ${product.discount}
+                            </span>
+                        </div>
+                        <h3 class="font-bold text-amber-950 font-heading text-base leading-snug">${product.name}</h3>
+                        <p class="text-xs text-gray-500 mt-1">${product.unit}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-amber-50 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-gray-400 block">Price</span>
+                            <span class="text-lg font-bold text-amber-900 font-heading">৳${product.price}</span>
+                        </div>
+                        <button onclick="addToCart(${product.id})" class="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold shadow hover:shadow-md transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-plus"></i> Add
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter Functionality
+        function filterProducts(category) {
+            document.querySelectorAll('#category-filters button').forEach(btn => {
+                btn.classList.remove('bg-amber-500', 'text-white', 'active');
+                btn.classList.add('bg-white', 'text-gray-700');
+            });
+            event.target.classList.remove('bg-white', 'text-gray-700');
+            event.target.classList.add('bg-amber-500', 'text-white', 'active');
+
+            renderProducts(category);
+        }
+
+        // Cart Actions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+
+            updateCartUI();
+            showToast(`${product.name} added to cart!`);
+        }
+
+        function changeQty(productId, change) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.qty += change;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateDeliveryFee() {
+            const area = document.getElementById('cust-area').value;
+            deliveryFee = area === 'satkhira-sadar' ? 30 : 60;
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Count badge
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cart-badge').textContent = totalCount;
+
+            // Render Cart Items
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 text-gray-400 space-y-2">
+                        <i class="fa-solid fa-basket-shopping text-4xl"></i>
+                        <p class="text-sm">Your basket is empty.</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = "flex items-center justify-between bg-amber-50/50 p-2.5 rounded-xl border border-amber-100";
+                    row.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 object-cover rounded-lg">
+                            <div>
+                                <h4 class="font-bold text-xs text-amber-950">${item.name}</h4>
+                                <p class="text-[11px] text-gray-500">৳${item.price} x ${item.qty}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-white border border-amber-300 rounded text-amber-900 font-bold text-xs flex items-center justify-center">-</button>
+                            <span class="text-xs font-bold text-amber-950">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-white border border-amber-300 rounded text-amber-900 font-bold text-xs flex items-center justify-center">+</button>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
+            }
+
+            // Calculations
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const grandTotal = subtotal + (cart.length > 0 ? deliveryFee : 0);
+
+            document.getElementById('cart-subtotal').textContent = `৳${subtotal}`;
+            document.getElementById('cart-delivery').textContent = cart.length > 0 ? `৳${deliveryFee}` : '৳0';
+            document.getElementById('cart-grandtotal').textContent = `৳${grandTotal}`;
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // WhatsApp Order Generator
+        function submitOrderWhatsApp() {
+            if (cart.length === 0) {
+                alert('Please add at least one bakery item to your basket!');
+                return;
+            }
+
+            const name = document.getElementById('cust-name').value.trim();
+            const phone = document.getElementById('cust-phone').value.trim();
+            const address = document.getElementById('cust-address').value.trim();
+            const payment = document.getElementById('cust-payment').value;
+
+            if (!name || !phone || !address) {
+                alert('Please fill out your Name, Phone Number, and Delivery Address!');
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const grandTotal = subtotal + deliveryFee;
+
+            let orderText = `*NEW ORDER - NEW HOOGHLY BAKERY*\n`;
+            orderText += `---------------------------------\n`;
+            orderText += `*Customer:* ${name}\n`;
+            orderText += `*Phone:* ${phone}\n`;
+            orderText += `*Address:* ${address}\n`;
+            orderText += `*Payment:* ${payment}\n`;
+            orderText += `---------------------------------\n`;
+            orderText += `*ITEMS ORDERED:*\n`;
+
+            cart.forEach((item, index) => {
+                orderText += `${index + 1}. ${item.name} (${item.unit}) - ${item.qty}x = ৳${item.price * item.qty}\n`;
+            });
+
+            orderText += `---------------------------------\n`;
+            orderText += `Subtotal: ৳${subtotal}\n`;
+            orderText += `Delivery Fee: ৳${deliveryFee}\n`;
+            orderText += `*TOTAL AMOUNT: ৳${grandTotal}*\n`;
+
+            const encodedMsg = encodeURIComponent(orderText);
+            const whatsappUrl = `https://wa.me/8801400993624?text=${encodedMsg}`;
+
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Quick Contact Form Handler
+        function handleInquirySubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('inquiry-name').value;
+            const phone = document.getElementById('inquiry-phone').value;
+            const msg = document.getElementById('inquiry-msg').value;
+
+            const text = `Inquiry from ${name} (${phone}): ${msg}`;
+            window.open(`https://wa.me/8801400993624?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // Toast Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 2500);
+        }
+
+        // Initial Page Render
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
